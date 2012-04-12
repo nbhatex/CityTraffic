@@ -1,6 +1,7 @@
 package exercise;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -101,5 +102,39 @@ public class TestJourneyTimeCalculator {
 		assertEquals(430,time);
 	}
 	
+	@Test 
+	public void testHandleEmptyRoute() {
+		Route route = new Route();
+		JourneyTimeCalculator calc = new JourneyTimeCalculator();
+		long time = calc.calculateTimeTaken(route);
+		assertEquals(0,time);
+	}
+	
+	@Test 
+	public void testZeroDistance() {
+		Route route = new Route();
+		route.addStretch(new GoodStretch(0.0f));
+		JourneyTimeCalculator calc = new JourneyTimeCalculator();
+		long time = calc.calculateTimeTaken(route);
+		assertEquals(0,time);
+	}
+	@Test 
+	public void test2ZeroDistance() {
+		Route route = new Route();
+		route.addStretch(new GoodStretch(0.0f));
+		route.addStretch(new GoodStretch(0.0f));
+		JourneyTimeCalculator calc = new JourneyTimeCalculator();
+		long time = calc.calculateTimeTaken(route);
+		assertEquals(0,time);
+	}
+	@Test
+	public void testNegativeDistance() {
+		try {
+			Stretch s = new GoodStretch(-1.0f);
+		} catch (RuntimeException rex){
+			return;
+		}
+		fail("Expected RuntimeException ");
+	}
 	
 }

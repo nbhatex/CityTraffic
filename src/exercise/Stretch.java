@@ -8,17 +8,24 @@ public abstract class Stretch {
 	}
 
 	public void setDistance(float distance) {
+		if ( distance < 0) {
+			throw new RuntimeException("Invalid input");
+		}
+		
 		this.distance = distance;
 	}
 
 	public Stretch(float distance) {
+		if ( distance < 0) {
+			throw new RuntimeException("Invalid input");
+		}
 		this.distance = distance;
 		
 	}
 
 	/**
 	 * 
-	 * @return Time taken to traverse distnace in seconds
+	 * @return Time taken to traverse distance in seconds
 	 */
 	public long timeTaken() {
 		long t = (long) (this.getDistance() /getSpeed() * 60);
