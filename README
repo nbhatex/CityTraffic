@@ -1,0 +1,7 @@
+Source files
+
+JourneyTimeCalculator is the main calss which has the method calculateTimeTaken.
+This method takes Route object which holds the list of Stretches. calculateTimeTaken method iterates through Stretch object and calculates the time taken.
+
+Refer to TestJourneyTimeCalculator for sample usage of JourneyTimeCalculator 
+
