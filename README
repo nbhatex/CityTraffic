@@ -5,3 +5,9 @@ This method takes Route object which holds the list of Stretches. calculateTimeT
 
 Refer to TestJourneyTimeCalculator for sample usage of JourneyTimeCalculator 
 
+Route route = new Route();
+route.addStretch(new GoodStretch(2));
+route.addStretch(new BadStretch(2));
+JourneyTimeCalculator calc = new JourneyTimeCalculator();
+long time = calc.calculateTimeTaken(route);
+
