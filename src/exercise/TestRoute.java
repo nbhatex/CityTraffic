@@ -2,11 +2,9 @@ package exercise;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
-
-public class TestJourneyTimeCalculator {
+public class TestRoute {
 	
 	@Test
 	public void testShouldReturnJourneyTimeFor1StretchGood(){
@@ -14,8 +12,8 @@ public class TestJourneyTimeCalculator {
 		Stretch stretch = new GoodStretch(distance);
 		Route route = new Route();
 		route.addStretch(stretch);
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(60,time);
 	}
 	
@@ -25,8 +23,8 @@ public class TestJourneyTimeCalculator {
 		Stretch stretch = new BadStretch(distance);
 		Route route = new Route();
 		route.addStretch(stretch);
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(120,time);
 	}
 	
@@ -35,8 +33,8 @@ public class TestJourneyTimeCalculator {
 		Route route = new Route();
 		route.addStretch(new GoodStretch(3));
 		route.addStretch(new GoodStretch(2));
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(300,time);
 	}
 	
@@ -45,8 +43,8 @@ public class TestJourneyTimeCalculator {
 		Route route = new Route();
 		route.addStretch(new GoodStretch(2));
 		route.addStretch(new GoodStretch(2));
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(310,time);
 	}
 
@@ -55,8 +53,8 @@ public class TestJourneyTimeCalculator {
 		Route route = new Route();
 		route.addStretch(new GoodStretch(2));
 		route.addStretch(new BadStretch(2));
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(430,time);
 	}
 	
@@ -66,8 +64,8 @@ public class TestJourneyTimeCalculator {
 		route.addStretch(new BadStretch(0.1f));
 		route.addStretch(new BadStretch(0.1f));
 		route.addStretch(new BadStretch(0.1f));
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(36,time);
 	}
 	
@@ -77,8 +75,8 @@ public class TestJourneyTimeCalculator {
 		route.addStretch(new BadStretch(0.3f));
 		route.addStretch(new BadStretch(0.3f));
 		route.addStretch(new BadStretch(0.2f));
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(214,time);
 	}
 	
@@ -87,8 +85,8 @@ public class TestJourneyTimeCalculator {
 		Route route = new Route();
 		route.addStretch(new GoodStretch(4.0f));
 		route.addStretch(new BadStretch(2.0f));
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(610,time);
 	}
 	
@@ -97,16 +95,16 @@ public class TestJourneyTimeCalculator {
 		Route route = new Route();
 		route.addStretch(new BadStretch(1.0f));
 		route.addStretch(new GoodStretch(4.0f));
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(430,time);
 	}
 	
 	@Test 
 	public void testHandleEmptyRoute() {
 		Route route = new Route();
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(0,time);
 	}
 	
@@ -114,8 +112,8 @@ public class TestJourneyTimeCalculator {
 	public void testZeroDistance() {
 		Route route = new Route();
 		route.addStretch(new GoodStretch(0.0f));
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(0,time);
 	}
 	@Test 
@@ -123,18 +121,9 @@ public class TestJourneyTimeCalculator {
 		Route route = new Route();
 		route.addStretch(new GoodStretch(0.0f));
 		route.addStretch(new GoodStretch(0.0f));
-		JourneyTimeCalculator calc = new JourneyTimeCalculator();
-		long time = calc.calculateTimeTaken(route);
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
 		assertEquals(0,time);
 	}
-	@Test
-	public void testNegativeDistance() {
-		try {
-			Stretch s = new GoodStretch(-1.0f);
-		} catch (RuntimeException rex){
-			return;
-		}
-		fail("Expected RuntimeException ");
-	}
-	
+
 }

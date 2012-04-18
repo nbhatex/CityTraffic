@@ -22,15 +22,7 @@ public abstract class Stretch {
 		this.distance = distance;
 		
 	}
-
-	/**
-	 * 
-	 * @return Time taken to traverse distance in seconds
-	 */
-	public long timeTaken() {
-		long t = (long) (this.getDistance() /getSpeed() * 60);
-		return t;
-	}
 	
-	abstract public float getSpeed();
+	abstract public long timeTaken(Car car);
+		
 }

@@ -11,3 +11,17 @@ route.addStretch(new BadStretch(2));
 JourneyTimeCalculator calc = new JourneyTimeCalculator();
 long time = calc.calculateTimeTaken(route);
 
+Refactoring carried
+
+1. Route was exposing streches object by public getter method. Now there is no need to give it out. Even if required Iterator might be a better option.So JourneyTimeCalculator object was not required.
+2. Speed was a property of the Car so created new Car object and average speed as property.
+3. Based on the type stretch speed of vehicle varies so adjusting the speed is part of time calculation.
+
+New code will look like-
+
+		Route route = new Route();
+		route.addStretch(new GoodStretch(0.0f));
+		Car car = new Car(60.0f / 60);
+		long time = route.calculateTimeTaken(car);
+ 
+

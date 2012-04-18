@@ -2,14 +2,17 @@ package exercise;
 
 public class GoodStretch extends Stretch {
 	
-	private static float SPEED =  60.0f / 60;
-
 	public GoodStretch(float distance) {
 		super(distance);
 	}
 
-	@Override
-	public float getSpeed() {
-		return SPEED;
+	/**
+	 * 
+	 * @return Time taken to traverse distance in seconds
+	 */
+	public long timeTaken(Car car) {
+		long t = (long) (this.getDistance() /car.getSpeed() * 60);
+		return t;
 	}
+
 }
