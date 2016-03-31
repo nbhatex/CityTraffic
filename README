@@ -1,3 +1,5 @@
+Problem 1 - city traffic ============================ In a city, traffic is managed via traffic lights. Assume that each light goes green for 1 minute and red for 2 minutes. A stretch of road between 2 traffic lights can be either good or bad. A car driving on a good stretch does an average of 60 km/ hr, and on a bad stretch of 30 km/ hr. Assume that there is no other speed variance. If a car stops on a red light, it takes 10 seconds before it runs again once the light goes green. Write a program with test cases taking the layout (number of lights, distance between each light) between a start and end point as an input, and calculating the approximate time a car would take to cover the journey. Assume also that all lights are green at the start of the journey.
+
 Source files
 
 JourneyTimeCalculator is the main calss which has the method calculateTimeTaken.
