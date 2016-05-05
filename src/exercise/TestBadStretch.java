@@ -8,24 +8,22 @@ import org.junit.Test;
 public class TestBadStretch {
 	@Test
 	public void testTimeTaken() {
-		Car car = new Car(60.f/60);
 		BadStretch gs = new BadStretch(1);
-		long t = gs.timeTaken(car);
+		long t = gs.timeTakenInSeconds();
 		assertEquals(120,t);
 	}
 	
 	@Test
 	public void testTimeTakenZeroDistance(){
-		Car car = new Car(60.f/60);
 		BadStretch gs = new BadStretch(0);
-		long t = gs.timeTaken(car);
+		long t = gs.timeTakenInSeconds();
 		assertEquals(0,t);
 	}
 	
 	@Test
 	public void testNegativeDistance() {
 		try {
-			Stretch s = new BadStretch(-1.0f);
+			Stretch badStretch = new BadStretch(-1.0f);
 		} catch (RuntimeException rex){
 			return;
 		}

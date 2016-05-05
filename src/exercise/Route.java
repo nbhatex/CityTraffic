@@ -26,7 +26,7 @@ public class Route {
 		
 		while(iter.hasNext()){
 			Stretch s = iter.next();
-			time += s.timeTaken(car);
+			time += s.timeTakenInSeconds();
 			if (iter.hasNext() &&  time % 180 >= 60) {
 				double t1 = time / 180.0f;
 				long t2 = (long)Math.ceil(t1);

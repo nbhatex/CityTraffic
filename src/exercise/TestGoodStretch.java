@@ -9,24 +9,22 @@ public class TestGoodStretch {
 	
 	@Test
 	public void testTimeTaken() {
-		Car car = new Car(60.f/60);
 		GoodStretch gs = new GoodStretch(1);
-		long t = gs.timeTaken(car);
+		long t = gs.timeTakenInSeconds();
 		assertEquals(60,t);
 	}
 	
 	@Test
 	public void testTimeTakenZeroDistance(){
-		Car car = new Car(60.f/60);
 		GoodStretch gs = new GoodStretch(0);
-		long t = gs.timeTaken(car);
+		long t = gs.timeTakenInSeconds();
 		assertEquals(0,t);
 	}
 	
 	@Test
 	public void testNegativeDistance() {
 		try {
-			Stretch s = new GoodStretch(-1.0f);
+			Stretch goodStretch = new GoodStretch(-1.0f);
 		} catch (RuntimeException rex){
 			return;
 		}

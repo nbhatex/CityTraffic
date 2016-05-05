@@ -23,6 +23,6 @@ public abstract class Stretch {
 		
 	}
 	
-	abstract public long timeTaken(Car car);
+	abstract public long timeTakenInSeconds();
 		
 }
